@@ -42,6 +42,7 @@ func (service transtionServiceImpl) Processtransaction() {
 
 			}()
 
+			//worker 1
 			go func() {
 				for {
 					n := <-in
@@ -57,6 +58,8 @@ func (service transtionServiceImpl) Processtransaction() {
 					fmt.Println("asign A")
 				}
 			}()
+
+			//worker 2
 			go func() {
 				for {
 					n := <-in
@@ -86,13 +89,8 @@ func (service transtionServiceImpl) Processtransaction() {
 			}()
 		}
 
-		//x := <-out
-
 		fmt.Println("encheck....")
 
-		//for n := range out {
-		//	fmt.Printf("<- receive job : %d\n", n.Id)
-		//}
 		time.Sleep(5 * time.Second)
 	}
 
